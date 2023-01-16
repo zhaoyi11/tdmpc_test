@@ -69,6 +69,7 @@ def train(cfg):
 		train_metrics = {}
 		if step >= cfg.seed_steps:
 			num_updates = cfg.seed_steps if step == cfg.seed_steps else cfg.episode_length
+			num_updates = num_updates // cfg.update_every_steps
 			for i in range(num_updates):
 				train_metrics.update(agent.update(buffer, step+i))
 

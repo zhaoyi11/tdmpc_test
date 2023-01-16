@@ -87,8 +87,8 @@ class Logger(object):
 		self._cfg = cfg
 		self._eval = []
 		print_run(cfg)
-		project, entity = cfg.get('wandb_project', 'none'), cfg.get('wandb_entity', 'none')
-		run_offline = not cfg.get('use_wandb', False) or project == 'none' or entity == 'none'
+		project = cfg.get('wandb_project', 'none')
+		run_offline = not cfg.get('use_wandb', False) or project == 'none'
 		if run_offline:
 			print(colored('Logs will be saved locally.', 'yellow', attrs=['bold']))
 			self._wandb = None
@@ -97,7 +97,6 @@ class Logger(object):
 				os.environ["WANDB_SILENT"] = "true"
 				import wandb
 				wandb.init(project=project,
-						entity=entity,
 						name=str(cfg.seed),
 						group=self._group,
 						tags=cfg_to_group(cfg, return_list=True) + [f'seed:{cfg.seed}'],
