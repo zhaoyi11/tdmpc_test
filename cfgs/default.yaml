@@ -42,11 +42,11 @@ latent_dim: 50
 
 # wandb (insert your own)
 use_wandb: true
-wandb_project: tdmpc
+wandb_project: tdmpc_aligned
 wandb_entity: none
 
 # misc
-seed: 1
+seed: -1
 exp_name: default
 eval_freq: 20000
 eval_episodes: 10
